@@ -16,7 +16,7 @@ public class ArcherState : MonoBehaviour {
 
     public float shoottimer = 1;
     public GameObject arrow;
-    public ArcherState state;
+    public archerState state;
     public Transform target;
 
     void updateState()
