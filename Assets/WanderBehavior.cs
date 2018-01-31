@@ -10,18 +10,9 @@ public class WanderBehavior : MonoBehaviour {
     public float dist; //projected unit circle center
     public Vector3 target;
 
+    
 
-
-    Rigidbody rb;
-
-	// Use this for initialization
-	void Start ()
-    {
-        rb = GetComponent<Rigidbody>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    public Vector3 returnWanderPoints()
     {
         target = Vector3.zero;
         target = Random.insideUnitCircle.normalized * rad;
@@ -32,18 +23,7 @@ public class WanderBehavior : MonoBehaviour {
         target += transform.forward * dist;
 
         
-        target.y = 0;
-
-        Vector3 dir = (target - transform.position).normalized;
-        Vector3 DesVel = dir * speed;
-        rb.AddForce(DesVel - rb.velocity);
-        transform.forward = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-
-      //  Debug.DrawLine(transform.position, transform.position + (transform.forward * dist),Color.red);
-      //  Debug.DrawLine(transform.position + (transform.forward * dist),target, Color.blue);
-        //transform.LookAt(rb.velocity);
-        // transform.forward = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-
-
+        target.y = transform.position.y;
+        return target;
     }
 }
